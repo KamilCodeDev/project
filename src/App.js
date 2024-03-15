@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React, { useContext } from "react";
+import "./App.css";
+import Context from "./context";
+const App = () => {
+  const { array } = useContext(Context);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Our Tours</h1>
+      <div>
+        {array.map((el) => {
+            return(
+              <div>
+                <img src={el.image} alt="" />
+                <p>{el.info}</p>
+                <p>{el.price}</p>
+              </div>
+            )
+        })}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
